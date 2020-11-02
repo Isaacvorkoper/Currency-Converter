@@ -1,0 +1,16 @@
+﻿<Window x:Class="Valutaomregner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Valutaomregner"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="600" ResizeMode="CanMinimize">
+    <Grid>
+        <ComboBox HorizontalAlignment="Left" Margin="91,191,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Right" Margin="0,191,91,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="239,260,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="239,120,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>
