@@ -5,12 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Valutaomregner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600" ResizeMode="CanMinimize">
-    <Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="91,191,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Right" Margin="0,191,91,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="239,260,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="239,120,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-
+        Title="MainWindow" Height="450" Width="600" ResizeMode="CanMinimize" Background="#FFF6F6F6">
+    <Grid RenderTransformOrigin="0.495,0.481">
+        <ComboBox x:Name="CurBox1" IsEditable="True" Text="Vælg start valuta"
+                  SelectionChanged="CurBox1_SelectionChanged" HorizontalAlignment="Left" Margin="91,191,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="CurBox2" IsEditable="True" Text="Vælg slut valuta"
+                  SelectionChanged="CurBox2_SelectionChanged" HorizontalAlignment="Right" Margin="0,191,91.6,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ConBox" HorizontalAlignment="Left" Height="23" Margin="186,141,0,0"
+                 TextWrapping="Wrap" Text="Indtast beløb" TextAlignment="Center" GotKeyboardFocus="ConBox_GotKeyboardFocus" VerticalAlignment="Top" Width="228"/>
+        <TextBox x:Name="ResBox" TextChanged="ResBox_TextChanged" Background="#d1e881" HorizontalAlignment="Left" Height="23" Margin="186,243,0,0"
+                 TextWrapping="Wrap" Text="Resultat  " TextAlignment="Center" VerticalAlignment="Top" Width="228" IsReadOnly="True"/>
     </Grid>
 </Window>
