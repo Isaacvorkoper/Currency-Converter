@@ -1,19 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Valutaomregner
 {
@@ -25,26 +14,34 @@ namespace Valutaomregner
         public MainWindow()
         {
             InitializeComponent();
-            CurBox1.Items.Add("USD");
-            CurBox1.Items.Add("EUR");
-            CurBox1.Items.Add("GBP");
-            CurBox1.Items.Add("DKK");
-            CurBox1.Items.Add("SEK");
-            CurBox1.Items.Add("NOK");
+            curBox1.Items.Add("USD");
+            curBox1.Items.Add("EUR");
+            curBox1.Items.Add("GBP");
+            curBox1.Items.Add("DKK");
+            curBox1.Items.Add("SEK");
+            curBox1.Items.Add("NOK");
 
-            CurBox2.Items.Add("USD");
-            CurBox2.Items.Add("EUR");
-            CurBox2.Items.Add("GBP");
-            CurBox2.Items.Add("DKK");
-            CurBox2.Items.Add("SEK");
-            CurBox2.Items.Add("NOK");
+            curBox2.Items.Add("USD");
+            curBox2.Items.Add("EUR");
+            curBox2.Items.Add("GBP");
+            curBox2.Items.Add("DKK");
+            curBox2.Items.Add("SEK");
+            curBox2.Items.Add("NOK");
         }
 
-        private void ConBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        private float getCurrency(string api, string conversion)
         {
-            TextBox txtBox = sender as TextBox;
-            if (txtBox.Text == "Indtast beløb")
-                txtBox.Text = string.Empty;
+            try
+            {
+                string Json = new WebClient().DownloadString(api);
+                var result = JsonConvert.DeserializeObject<dynamic>(Json);
+                return result["rates"][conversion];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "Try again");
+            }
+            return 0;
         }
 
         private void CurBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -57,9 +54,32 @@ namespace Valutaomregner
 
         }
 
-        private void ResBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void conBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (conBox.Text == "")
+            {
+                resBox.Text = "";
+            }
+            else
+            {
+                string apiRequest = "https://api.exchangeratesapi.io/latest?base=" + curBox1.SelectedItem;
 
+                string c2 = curBox2.SelectedItem.ToString();
+
+                float textValue = 1;
+                float currencyValue = getCurrency(apiRequest, c2);
+                try
+                {
+                    textValue = float.Parse(conBox.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Input skal være et gyldigt nummer");
+                }
+
+
+                resBox.Text = $"{textValue} {curBox1.SelectedItem} = {currencyValue * textValue} {c2}";
+            }
         }
     }
 }

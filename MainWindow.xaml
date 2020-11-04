@@ -5,15 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Valutaomregner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600" ResizeMode="CanMinimize" Background="#FFF6F6F6">
+        Title="MainWindow" Height="254" Width="450.4" ResizeMode="CanMinimize" Background="#FFF6F6F6">
     <Grid RenderTransformOrigin="0.495,0.481">
-        <ComboBox x:Name="CurBox1" IsEditable="True" Text="Vælg start valuta"
-                  SelectionChanged="CurBox1_SelectionChanged" HorizontalAlignment="Left" Margin="91,191,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="CurBox2" IsEditable="True" Text="Vælg slut valuta"
-                  SelectionChanged="CurBox2_SelectionChanged" HorizontalAlignment="Right" Margin="0,191,91.6,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="ConBox" HorizontalAlignment="Left" Height="23" Margin="186,141,0,0"
-                 TextWrapping="Wrap" Text="Indtast beløb" TextAlignment="Center" GotKeyboardFocus="ConBox_GotKeyboardFocus" VerticalAlignment="Top" Width="228"/>
-        <TextBox x:Name="ResBox" TextChanged="ResBox_TextChanged" Background="#d1e881" HorizontalAlignment="Left" Height="23" Margin="186,243,0,0"
-                 TextWrapping="Wrap" Text="Resultat  " TextAlignment="Center" VerticalAlignment="Top" Width="228" IsReadOnly="True"/>
+        <ComboBox x:Name="curBox1" IsEditable="True" Text="Vælg start valuta"
+                  SelectionChanged="CurBox1_SelectionChanged" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="curBox2" IsEditable="True" Text="Vælg slut valuta"
+                  SelectionChanged="CurBox2_SelectionChanged" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Margin="10,158,0,0"/>
+        <TextBox x:Name="conBox" HorizontalAlignment="Left" Height="23" Margin="194,50,0,0"
+                 TextWrapping="Wrap" Text="" TextAlignment="Center" TextChanged="conBox_TextChanged" VerticalAlignment="Top" Width="228"/>
+        <TextBox x:Name="resBox" Background="#d1e881" HorizontalAlignment="Left" Height="23" Margin="194,157,0,0"
+                 TextWrapping="Wrap" Text="" TextAlignment="Center" VerticalAlignment="Top" Width="228" IsReadOnly="True"/>
+        <Label Content="Indtast beløb" HorizontalAlignment="Left" Margin="240,13,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+        <Label Content="Resultat" HorizontalAlignment="Left" Margin="265,115,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+        <Image HorizontalAlignment="Left" Height="63" Margin="130,0,0,72.8" VerticalAlignment="Bottom" Width="65" Source="Picture/510-512.png"/>
     </Grid>
 </Window>
