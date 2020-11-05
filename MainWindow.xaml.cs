@@ -39,7 +39,7 @@ namespace Valutaomregner
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "Try again");
+                MessageBox.Show(ex.Message + "Prøv igen");
             }
             return 0;
         }
@@ -56,29 +56,37 @@ namespace Valutaomregner
 
         private void conBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (conBox.Text == "")
+            if (curBox1.Text.Length == 3 && curBox2.Text.Length == 3)
             {
-                resBox.Text = "";
+
+                if (conBox.Text == "")
+                {
+                    resBox.Text = "";
+                }
+                else
+                {
+                    string apiRequest = "https://api.exchangeratesapi.io/latest?base=" + curBox1.SelectedItem;
+
+                    string c2 = curBox2.SelectedItem.ToString();
+
+                    float textValue = 1;
+                    float currencyValue = getCurrency(apiRequest, c2);
+                    try
+                    {
+                        textValue = float.Parse(conBox.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Noget gik galt");
+                    }
+
+                    resBox.Text = $"{textValue} {curBox1.SelectedItem} = {currencyValue * textValue} {c2}";
+
+                }
             }
             else
             {
-                string apiRequest = "https://api.exchangeratesapi.io/latest?base=" + curBox1.SelectedItem;
-
-                string c2 = curBox2.SelectedItem.ToString();
-
-                float textValue = 1;
-                float currencyValue = getCurrency(apiRequest, c2);
-                try
-                {
-                    textValue = float.Parse(conBox.Text);
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Input skal være et gyldigt nummer");
-                }
-
-
-                resBox.Text = $"{textValue} {curBox1.SelectedItem} = {currencyValue * textValue} {c2}";
+                MessageBox.Show("Vælg valutaer");
             }
         }
     }
